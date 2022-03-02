@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # Allauth dependency - don't remove!!!
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media', # Required to show images and another media stuff
             ],
         },
     },
@@ -129,11 +131,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+   'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+       'NAME': BASE_DIR / 'db.sqlite3',
+   }
 }
+
+#DATABASES = {
+#    'default': dj_database_url.parse("postgres://qhzoweszdkwlrp:f5a12404b7ec461f4e89cc6351efad3268ae775caf7156723dd367c0fd5b912a@ec2-54-195-76-73.eu-west-1.compute.amazonaws.com:5432/d5l4p37t4kgrv0")
+#}
 
 
 # Password validation
