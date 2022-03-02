@@ -1,1 +1,1 @@
-web: gunicorn aifieldnews.wsgi:application
+web: gunicorn airfieldnews.wsgi:application
