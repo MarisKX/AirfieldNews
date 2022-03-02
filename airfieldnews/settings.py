@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-egk#9@(k_(%(ki6i8^wv30dckw9s^x33w^whgs)$*^+0#z#p$-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['airfieldnews.herokuapp.com', 'localhost']
 
 
 # Application definition
