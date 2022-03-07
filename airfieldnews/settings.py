@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.linkedin',
     # Custom made apps:
     'home',
+    'article',
 
     # Needed for AWS to work
     'storages',
@@ -215,3 +216,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Twitter
+# API Key = 'QUHPHkYLApN9L6ydSpeePhAIW'
+# API Key Secret = 'EJVUXzhgmhUHVkt3vK5Uqn11HyCfAx697mx7MUvb0W0bVaF4zu'
+# Bearer Token = 'AAAAAAAAAAAAAAAAAAAAACJXZwEAAAAAeA3UCSiJ%2F7w7Rhy7xKNrVOPQRjA%3DhHwFVV0e9tfb6NYVzew6e0RiC48of27H5YES5Ndvi4dLtPdHYt'

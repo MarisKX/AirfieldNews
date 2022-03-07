@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300&display=swap');
+
+.article-text-field {
+    text-align: justify;
+}
+
+.article-inline-image {
+    max-height: 400px;
+    min-height: 230px;
+    width: auto;
+
+}
+
+.source {
+    font-family: 'Josefin Slab', serif;
+}
+
+.source:hover,
+.source a:hover {
+    color: black;
+    font-size: 1.1em;
+}
+
+.container-article-heading {
+    position: relative;
+    margin-top: 5%;
+    height: 100%;
+}
+
+.heading-row {
+    margin-left: -15%;
+    margin-right: -15%;
+}
+
+.article-heading {
+    position: absolute;
+    bottom: 5px;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+.heading-image {
+    height: 80%;
+    width: auto;
+}

@@ -2,16 +2,76 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+    <div class="row seperation-header w-100"></div>
 {% endblock %}
 
 {% block content %}
-<div class="temp-home-page">
-    <img class="center" src="{{ MEDIA_URL }}full_logo.png" alt="Logo" width="95%" height="auto">
-    <h3 class="text-logo-color text-center mt-5">Coming soon... </h3>
+{% include 'includes/main-nav.html' %}
+<div class="row w-100">
+    <div class="col-2 left-side-content">Side</div>
+    <div class="col col-lg-8">
+        <div class="row">
+            <div class="col-10 offset-1 my-3">
+                <div class="outer-border-cut">
+                    <div class="inner-border-cut">
+                        <h3>Latest News</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row latest-articles-row">
+            {% for article in latest_articles %}
+            <div class="col latest-articles card rounded-0">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="dark">
+                    <a href="{% url 'article' article.article_number %}">
+                        <img src="{{ article.article_image.url }}" class="img-fluid"/>
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'article' article.article_number %}">
+                        <h4 class="card-title text-uppercase">{{ article.heading }}</h4>
+                        <p class="card-text">{{ article.article_insight }}</p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% for category in categories %}
+        <div class="row">
+            <div class="col-10 offset-1 my-3">
+                <div class="outer-border-cut">
+                    <div class="inner-border-cut">
+                        <h3>{{ category.display_name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row latest-articles-row">
+            {% for articles in latest_articles_by_category %}
+                {% for article in articles %}
+                    {% if article.article_category == category %}
+                        <div class="col latest-articles card rounded-0" id="latest_articles_by_category_{{ forloop.counter }}">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="dark">
+                                <a href="{% url 'article' article.article_number %}">
+                                    <img src="{{ article.article_image.url }}" class="img-fluid"/>
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{% url 'article' article.article_number %}">
+                                    <h4 class="card-title text-uppercase">{{ article.heading }}</h4>
+                                    <p class="card-text">{{ article.article_insight }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-2 right-side-content">Side</div>
 </div>
+<div class="test">Articles</div>
 {% endblock %}
