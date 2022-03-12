@@ -1,6 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_meta %}
+    <meta property="og:url"           content="{{ request.get_full_path }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{ article.heading }}" />
+    <meta property="og:description"   content="{{ article.article_insight }}" />
+    <meta property="og:image"         content="{{ article.article_image.url }}" />
+{% endblock %}
+
+{% block extra_js %}
+    <script>    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/article-elements.css' %}">
 {% endblock %}
@@ -12,19 +31,26 @@
 {% block content %}
 {% include 'includes/main-nav.html' %}
 <div class="row w-100">
-    <div class="col-3 col-xl-4 left-side-content">Side</div>
+    <div class="col-3 col-xl-4 left-side-content-article-page">Side</div>
     <div class="col-sm-12 col-lg-6 col-xl-4">
         <div class="row heading-row">
             <div class="col-12 container-article-heading">
+                <a class="btn text-white bg-dark-blue rounded-0 text-uppercase col-3 ms-2 region-on-image" href="">
+                    {{ article.article_region.display_name }}
+                </a>
                 <img class="heading-image" src="{{ article.article_image.url }}" alt="{{ article.heading }}" style="width:100%;">
                 <div class="article-heading mx-3">
-                    <h2 class="fw-bold mt-5">{{ article.heading }}</h2>
+                    <h1 class="fw-bold mt-5">{{ article.heading }}</h1>
                 </div>
             </div>
         </div>
         <div class="article-content mb-5">
             <hr>
             <p>{{ article.date }} by {{ article.posted_by }}</p>
+            <div class="fb-share-button" 
+                data-href="{{ request.get_full_path }}" 
+                data-layout="button_count">
+            </div>
             <hr>
             {% for element in article_elements %}
                 {% if element.type.name == 'text_field' %}
@@ -33,11 +59,19 @@
                     {% include 'includes/article_elements/sub_heading.html' %}
                 {% elif element.type.name == 'image_field' %}
                     {% include 'includes/article_elements/image_field.html' %}
+                {% elif element.type.name == 'twitter' %}
+                    {% include 'includes/article_elements/twitter.html' %}
                 {% endif %}
             {% endfor %}
             <small class="source fw-bold">Source: <a href="{{ article.original_post }}" target="_blank">{{ article.source }}</a></small>
+            <hr>
+            {% for tag in article_tags %}
+                <a class="btn bg-dark-blue text-white rounded-0 tag-btn" href="">{{ tag.tag_name.tag_name }}</a>
+            {% endfor %}
         </div>
     </div>
-    <div class="col-3 col-xl-4 right-side-content">Side</div>
+    <div class="col-3 col-xl-4 right-side-content-article-page">
+        {% include 'includes/right-side.html' %}
+    </div>
 </div>
 {% endblock %}

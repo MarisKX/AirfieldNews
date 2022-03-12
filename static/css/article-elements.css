@@ -27,6 +27,11 @@
     height: 100%;
 }
 
+.region-on-image {
+    position: absolute;
+    top: 3%;
+}
+
 .heading-row {
     margin-left: -15%;
     margin-right: -15%;
@@ -41,4 +46,12 @@
 .heading-image {
     height: 80%;
     width: auto;
+}
+
+.right-side-content-article-page {
+    padding-left: 8%;
+}
+
+.left-side-content-article-page {
+    padding-right: 8%;
 }

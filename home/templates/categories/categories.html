@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="row seperation-header w-100"></div>
+{% endblock %}
+
+{% block content %}
+{% include 'includes/main-nav.html' %}
+<div class="row w-100">
+    <div class="col-2 left-side-content">Side</div>
+    <div class="col col-lg-8">
+        <div class="row">
+            <div class="col-10 offset-1 my-4">
+                <div class="outer-border-cut">
+                    <div class="inner-border-cut">
+                        <h3>{{ selected_category.display_name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row latest-articles-row">
+            {% for article in all_articles %}
+            <div class="col latest-articles-by-category card rounded-0">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="dark">
+                    <a href="{% url 'article' article.article_number %}">
+                        <img src="{{ article.article_image.url }}" class="img-fluid"/>
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'article' article.article_number %}">
+                        <h4 class="card-title text-uppercase">{{ article.heading }}</h4>
+                        <p class="card-text">{{ article.article_insight }}</p>
+                    </a>
+                </div>
+                <a class="btn text-white bg-dark-blue rounded-0 text-uppercase mb-2 col-8 offset-2" href="">
+                    {{ article.article_region.display_name }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-2 right-side-content">
+        {% include 'includes/right-side.html' %}
+    </div>
+</div>
+{% include 'includes/footer.html' %}
+{% endblock %}

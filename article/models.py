@@ -92,7 +92,7 @@ class Article(models.Model):
     article_number = models.CharField(max_length=8, default="1")
     article_category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL, related_name='article_category')
     article_sub_category = models.ForeignKey(SubCategory, null=True, blank=True, on_delete=models.SET_NULL, related_name='article_sub_category')
-    region = models.ForeignKey(Regions, null=True, blank=True, on_delete=models.SET_NULL, related_name='region')
+    article_region = models.ForeignKey(Regions, null=True, blank=True, on_delete=models.SET_NULL, related_name='region')
     article_image = models.ImageField(null=True, blank=True)
     heading = models.CharField(max_length=2048)
     article_insight = models.CharField(max_length=300)

@@ -13,16 +13,29 @@
                 {% for category in categories %}
                     {% if category.submenu %}
                         <li class="nav-item px-2">
-                            <a class="nav-link text-white" href="#">{{ category.display_name }}</a>
+                            <a class="nav-link text-white" href="{% url 'home' %}?category={{ category.name }}">{{ category.display_name }}</a>
                         </li>
                     {% else %}
                         <li class="nav-item px-2">
-                            <a class="nav-link text-white" href="#">{{ category.display_name }}</a>
+                            <a class="nav-link text-white" href="{% url 'home' %}?category={{ category.name }}">{{ category.display_name }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
                 <li class="nav-item px-2">
-                    <a class="nav-link text-white" href="#">Regions</a>
+                    <div class="dropdown">
+                        <a class="nav-link text-white dropdown-toggle"
+                            role="button"
+                            id="dropdownSubMenu"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="true">
+                                Regions
+                        </a>
+                        <ul class="dropdown-menu rounded-0 mt-2 bg-dark-blue border-0" aria-labelledby="dropdownSubMenu">
+                            {% for region in regions %}
+                                <li><a class="dropdown-item text-white" href="#">{{ region.display_name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                      </div>
                 </li>
             </ul>
             <form class="d-flex input-group w-auto search-form">

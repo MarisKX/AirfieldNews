@@ -63,6 +63,8 @@ class ArticleAdmin(admin.ModelAdmin):
     fields = (
         'article_number',
         'article_category',
+        'article_sub_category',
+        'article_region',
         'heading',
         'article_insight',
         'article_image',
@@ -72,7 +74,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'original_post',
         )
 
-    list_display = ('article_number', 'heading', 'date',)
+    list_display = ('article_number', 'heading', 'date', 'article_category', 'article_region',)
 
     ordering = ('-date',)
 
