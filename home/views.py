@@ -31,7 +31,7 @@ def index(request):
         article_by_category = Article.objects.filter(article_category=category).order_by('-date')[:6]
         latest_articles_by_category.append(article_by_category)
 
-    if latest_articles.count() >= 10:
+    if latest_articles.count() >= 4:
 
         if request.GET:
             # Handles main filtering functionality
