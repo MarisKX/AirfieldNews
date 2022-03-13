@@ -75,7 +75,7 @@
             <small class="source fw-bold">Source: <a href="{{ article.original_post }}" target="_blank">{{ article.source }}</a></small>
             <hr>
             {% for tag in article_tags %}
-                <a class="btn bg-dark-blue text-white rounded-0 tag-btn" href="">{{ tag.tag_name.tag_name }}</a>
+                <a class="btn bg-dark-blue text-white rounded-0 tag-btn" href="{% url 'home' %}?tag={{ tag.name }}">{{ tag.tag_name.tag_name }}</a>
             {% endfor %}
         </div>
     </div>
