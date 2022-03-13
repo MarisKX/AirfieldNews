@@ -60,3 +60,31 @@
 .fb-share-button {
     box-shadow: none;
 }
+
+@media (max-width: 1449px) {
+    .left-side-content-article-page {
+        width: 10%;
+    }
+    .article-content-container {
+        width: 60%;
+    }
+}
+
+@media (max-width: 1060px) {
+    .right-side-content-article-page,
+    .left-side-content-article-page {
+        display: none;
+    }
+    .article-content-container {
+        width: 90%;
+    }
+    .heading-row {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .article-content {
+        width: 80%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
