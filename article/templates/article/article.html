@@ -36,7 +36,7 @@
         {% include 'includes/left-side.html' %}
     </div>
 
-    <div class="col-sm-12 col-lg-6 col-xl-4 article-content-container">
+    <div class="col-sm-12 col-lg-6 col-xl-4 article-content">
         <div class="row heading-row">
             <div class="col-12 container-article-heading">
                 <a class="btn text-white bg-dark-blue rounded-0 text-uppercase col-3 ms-2 region-on-image"
@@ -45,7 +45,7 @@
                 </a>
                 <img class="heading-image" src="{{ article.article_image.url }}" alt="{{ article.heading }}" style="width:100%;">
                 <div class="article-heading mx-3">
-                    <h1 class="fw-bold mt-5">{{ article.heading }}</h1>
+                    <h1 class="fw-bold mt-5 article-heading-mobile">{{ article.heading }}</h1>
                 </div>
             </div>
         </div>

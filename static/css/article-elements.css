@@ -87,4 +87,31 @@
         margin-left: 5%;
         margin-right: 5%;
     }
+    .article-heading-mobile {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 742px) {
+    .article-heading-mobile {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 542px) {
+    .article-content-container {
+        width: 98%;
+    }
+    .heading-row {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .article-content {
+        width: 95%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .article-heading-mobile {
+        font-size: 1.0rem;
+    }
 }
