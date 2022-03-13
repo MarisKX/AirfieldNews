@@ -1,0 +1,59 @@
+<div class="nav-row-mobile bg-dark-blue">
+    <nav class="navbar navbar-expand">
+        <ul class="navbar-nav px-5">
+            <li class="nav-item px-2 burger-icon">
+                <div class="dropdown">
+                    <a class="nav-link text-white dropdown-toggle fs-2"
+                        role="button"
+                        id="dropdownSubMenuMobile"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="true">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-mobile rounded-0 mt-1 bg-dark-blue border-0" aria-labelledby="dropdownSubMenuMobile">
+                        <li class="dropdown-item text-white rounded-0">
+                            <form class="col sidenav-search-form my-3" method="GET" action="{% url 'home' %}">
+                                <div class="input-group">
+                                    <input 
+                                        class="form-control background-white rounded-0 search-input-mobile"
+                                        type="text"
+                                        name="q"
+                                        placeholder="Search"
+                                        aria-label="Search"
+                                        aria-describedby="search-all-articles-mobile"
+                                    />
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn bg-white rounded-0 form-control" id="search-all-articles-mobile">
+                                            <i class="icon fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="dropdown-item text-white rounded-0">Categories</li>
+                        {% for category in categories %}
+                            {% if category.submenu %}
+                                <li><a class="dropdown-item text-white ps-5 rounded-0" 
+                                    href="{% url 'home' %}?category={{ category.name }}">
+                                    {{ category.display_name }}</a>
+                                </li>
+                            {% else %}
+                                <li><a class="dropdown-item text-white ps-5 rounded-0" 
+                                    href="{% url 'home' %}?category={{ category.name }}">
+                                    {{ category.display_name }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class="dropdown-item text-white rounded-0">Regions</li>
+                        {% for region in regions %}
+                        <li><a class="dropdown-item text-white ps-5 rounded-0" 
+                            href="{% url 'home' %}?region={{ region.name }}">
+                            {{ region.display_name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>

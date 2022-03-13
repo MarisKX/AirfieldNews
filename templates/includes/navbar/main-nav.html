@@ -1,0 +1,53 @@
+<div class="nav-row bg-dark-blue">
+    <nav class="navbar navbar-expand">
+        <ul class="navbar-nav px-5">
+            <li class="nav-item px-2">
+                <a class="nav-link text-white" href="{% url 'home' %}"><i class="fa-regular fa-house"></i></a>
+            </li>
+            {% for category in categories %}
+                {% if category.submenu %}
+                    <li class="nav-item px-2">
+                        <a class="nav-link text-white" href="{% url 'home' %}?category={{ category.name }}">{{ category.display_name }}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item px-2">
+                        <a class="nav-link text-white" href="{% url 'home' %}?category={{ category.name }}">{{ category.display_name }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            <li class="nav-item px-2">
+                <div class="dropdown">
+                    <a class="nav-link text-white dropdown-toggle"
+                        role="button"
+                        id="dropdownSubMenu"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="true">
+                            Regions
+                    </a>
+                    <ul class="dropdown-menu rounded-0 mt-2 bg-dark-blue border-0" aria-labelledby="dropdownSubMenu">
+                        {% for region in regions %}
+                            <li><a class="dropdown-item text-white" href="{% url 'home' %}?region={{ region.name }}">{{ region.display_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <form class="" method="GET" action="{% url 'home' %}">
+            <div class="input-group">
+                <input 
+                    class="form-control background-white rounded-0 search-input-desktop"
+                    type="text"
+                    name="q"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="search-all-articles"
+                />
+                <div class="input-group-append">
+                    <button type="submit" class="btn bg-white rounded-0 form-control" id="search-all-articles">
+                        <i class="icon fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </nav>
+</div>

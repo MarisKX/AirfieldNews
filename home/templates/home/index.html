@@ -6,10 +6,16 @@
 {% endblock %}
 
 {% block content %}
-{% include 'includes/main-nav.html' %}
+
+{% include 'includes/logo-top.html' %}
+
 <div class="row w-100">
-    <div class="col-2 left-side-content"></div>
-    <div class="col col-lg-8">
+    
+    <div class="col left-side-content">
+        {% include 'includes/left-side.html' %}
+    </div>
+
+    <div class="col col-lg-8 main-content">
         <div class="row">
             <div class="col-10 offset-1 my-4">
                 <div class="outer-border-cut">
@@ -22,7 +28,7 @@
         <div class="row latest-articles-row main-row">
             {% for article in latest_articles %}
             <div class="col latest-articles card rounded-0" id="latest-articles-{{ forloop.counter }}">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="dark">
+                <div class="bg-image hover-overlay rounded-0">
                     <a href="{% url 'article' article.article_number %}">
                         <img src="{{ article.article_image.url }}" class="img-fluid latest-articles-picture"/>
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -34,7 +40,8 @@
                         <p class="card-text">{{ article.article_insight }}</p>
                     </a>
                 </div>
-                <a class="btn text-white bg-dark-blue rounded-0 text-uppercase mb-2 col-6 offset-3" href="">
+                <a class="btn text-white bg-dark-blue rounded-0 text-uppercase mb-2 col-6 offset-3"
+                    href="{% url 'home' %}?region={{ article.article_region.name }}">
                     {{ article.article_region.display_name }}
                 </a>
             </div>
@@ -54,8 +61,8 @@
             {% for articles in latest_articles_by_category %}
                 {% for article in articles %}
                     {% if article.article_category == category %}
-                        <div class="col latest-articles-by-category card rounded-0" id="latest_articles_by_category_{{ forloop.counter }}">
-                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="dark">
+                        <div class="col latest-articles-by-category card rounded-0" id="latest_articles_by_{{ category }}_{{ forloop.counter }}">
+                            <div class="bg-image hover-overlay rounded-0">
                                 <a href="{% url 'article' article.article_number %}">
                                     <img src="{{ article.article_image.url }}" class="img-fluid"/>
                                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -67,7 +74,8 @@
                                     <p class="card-text">{{ article.article_insight }}</p>
                                 </a>
                             </div>
-                            <a class="btn text-white bg-dark-blue rounded-0 text-uppercase mb-2 col-8 offset-2" href="">
+                            <a class="btn text-white bg-dark-blue rounded-0 text-uppercase mb-2 col-8 offset-2"
+                                href="{% url 'home' %}?region={{ article.article_region.name }}">
                                 {{ article.article_region.display_name }}
                             </a>
                         </div>
@@ -77,14 +85,10 @@
         </div>
         {% endfor %}
     </div>
-    <div class="col-2 right-side-content">
+
+    <div class="col right-side-content">
         {% include 'includes/right-side.html' %}
     </div>
 </div>
 {% include 'includes/footer.html' %}
-{% endblock %}
-
-{% block postloadjs %}
-    {{ block.super }}
-    <script src="{% static 'js/submenu-display.js' %}"></script>
 {% endblock %}

@@ -7,7 +7,10 @@
         <div class="col-lg-8">
           <hr class="text-white">
           {% for tag in tags %}
-            <a class="btn bg-white text-dark-blue rounded-0 tag-btn" href="">{{ tag.tag_name }}</a>
+            <a class="btn bg-white text-dark-blue rounded-0 tag-btn"
+              href="{% url 'home' %}?tag={{ tag.name }}">
+              {{ tag.tag_name }}
+            </a>
           {% endfor %}
           <hr class="text-white">
         </div>

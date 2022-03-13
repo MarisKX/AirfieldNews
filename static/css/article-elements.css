@@ -55,3 +55,8 @@
 .left-side-content-article-page {
     padding-right: 8%;
 }
+
+.twitter-share-button,
+.fb-share-button {
+    box-shadow: none;
+}

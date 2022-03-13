@@ -41,8 +41,8 @@
                     </a>
                 </div>
                 <a class="btn text-white bg-dark-blue rounded-0 text-uppercase mb-2 col-6 offset-3"
-                    href="{% url 'home' %}?region={{ article.article_region.name }}">
-                    {{ article.article_region.display_name }}
+                    href="{% url 'home' %}?category={{ article.article_category.name }}">
+                    {{ article.article_category.display_name }}
                 </a>
             </div>
             {% endfor %}

@@ -10,17 +10,17 @@
 {% include 'includes/logo-top.html' %}
 
 <div class="row w-100">
-    
+
     <div class="col left-side-content">
         {% include 'includes/left-side.html' %}
     </div>
-    
+
     <div class="col col-lg-8 main-content">
         <div class="row">
             <div class="col-10 offset-1 my-4">
-                <div class="outer-border-cut">
+                <div class="outer-border-cut search-result-heading">
                     <div class="inner-border-cut">
-                        <h3>{{ selected_category.display_name }}</h3>
+                        <h3>Search results for "{{ query_search_all }}"</h3>
                     </div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                     </a>
                 </div>
                 <a class="btn text-white bg-dark-blue rounded-0 text-uppercase mb-2 col-6 offset-3"
-                    href="{% url 'home' %}?region={{ article.article_region.name }}">
-                    {{ article.article_region.display_name }}
+                    href="{% url 'home' %}?category={{ article.article_category.name }}">
+                    {{ article.article_category.display_name }}
                 </a>
             </div>
             {% endfor %}
