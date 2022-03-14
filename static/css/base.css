@@ -325,6 +325,7 @@ a {
     }
     .navbar-expand {
         justify-content: end;
+        max-width: 100%;
     }
 
     .burger-icon {

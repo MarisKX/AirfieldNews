@@ -112,11 +112,14 @@
         width: 98%;
     }
     .article-content {
-        width: 95%;
+        width: 100%;
         margin-left: 5px;
         margin-right: 5px;
     }
     .article-heading-mobile {
         font-size: 1.0rem;
+    }
+    .sub-heading {
+        margin-left: 2%!important;
     }
 }

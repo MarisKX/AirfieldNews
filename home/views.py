@@ -16,7 +16,7 @@ def index(request):
     """ A view to return the index page """
     all_articles = Article.objects.all().order_by('-date')
     latest_articles = Article.objects.all().order_by('-date')[:6]
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('display_name')
     tags = TagsAll.objects.all().order_by('display_name')
     regions = Regions.objects.all().order_by('display_name')
 

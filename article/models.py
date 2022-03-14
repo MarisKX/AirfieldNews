@@ -95,7 +95,7 @@ class Article(models.Model):
     article_region = models.ForeignKey(Regions, null=True, blank=True, on_delete=models.SET_NULL, related_name='region')
     article_image = models.ImageField(null=True, blank=True)
     heading = models.CharField(max_length=2048)
-    article_insight = models.CharField(max_length=300)
+    article_insight = models.CharField(max_length=100)
     posted_by = models.CharField(max_length=64, default="AirfieldNews")
     date = models.DateField(auto_now_add=False)
     source = models.CharField(max_length=64)
