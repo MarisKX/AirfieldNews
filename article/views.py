@@ -5,7 +5,7 @@ from .models import Article, ArticleElements, Category, TagsAll, ArticleTags, Re
 def article(request, article_number):
     """ A view to show individual product details """
 
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('display_name')
     article = get_object_or_404(Article, article_number=article_number)
     article_elements = ArticleElements.objects.filter(article_number=article).order_by('sequence')
     article_tags = ArticleTags.objects.filter(article_number=article).order_by('tag_name')
