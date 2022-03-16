@@ -61,6 +61,10 @@
     box-shadow: none;
 }
 
+.article-quote {
+    width: 70%;
+}
+
 @media (max-width: 1449px) {
     .left-side-content-article-page {
         width: 10%;
