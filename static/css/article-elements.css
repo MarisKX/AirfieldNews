@@ -62,7 +62,7 @@
 }
 
 .article-quote {
-    width: 70%;
+    width: 65%;
 }
 
 @media (max-width: 1449px) {
@@ -86,6 +86,7 @@
     }
     .heading-row {
         margin-left: -4%;
+        margin-right: -4%;
     }
     .article-content {
         width: 80%;
