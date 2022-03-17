@@ -140,9 +140,10 @@ a {
 
 .tag-btn {
     margin: 2px;
-    font-size: 0.6em;
+    font-size: 0.7em;
     font-weight: bold;
     text-align: justify;
+    padding: 5px;
 }
 
 .dropdown-item:hover {
