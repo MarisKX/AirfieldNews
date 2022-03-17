@@ -71,6 +71,7 @@ class TagsAll(models.Model):
         if it hasn't been set already.
         """
         self.tag_name = f"#{self.display_name}"
+        self.name = self.display_name.replace(" ", "_").lower()
         super().save(*args, **kwargs)
 
 

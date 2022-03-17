@@ -33,7 +33,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class TagsAllAdmin(admin.ModelAdmin):
-    readonly_fields = ('tag_name', )
+    readonly_fields = ('name', 'tag_name', )
     list_display = ('name', 'display_name', 'tag_name',)
 
     ordering = ('display_name',)
