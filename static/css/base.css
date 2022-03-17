@@ -70,7 +70,6 @@ a {
 
 .page-header {
     z-index: 5;
-    width: 90%;
 }
 
 .seperation-header {
@@ -387,5 +386,8 @@ a {
     }
     .outer-border-cut.search-result-heading {
         width: 250px;
+    }
+    .page-header {
+        width: 90%;
     }
 }
