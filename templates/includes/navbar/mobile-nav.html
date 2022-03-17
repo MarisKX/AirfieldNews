@@ -1,3 +1,11 @@
+{% block extra_js %}
+<script>
+    var w = $(window).width();
+    $('.page-header').css('width', w);
+    $('body').css('max-width', w);
+</script>
+{% endblock %}
+
 <div class="nav-row-mobile bg-dark-blue">
     <nav class="navbar navbar-expand">
         <ul class="navbar-nav px-5">
@@ -57,3 +65,5 @@
         </ul>
     </nav>
 </div>
+
+
