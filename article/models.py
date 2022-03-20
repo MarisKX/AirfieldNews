@@ -97,7 +97,7 @@ class Article(models.Model):
     article_image = models.ImageField(null=True, blank=True)
     article_image_credit = models.CharField(max_length=250)
     heading = models.CharField(max_length=250)
-    article_insight = models.CharField(max_length=2048)
+    article_insight = models.CharField(max_length=250)
     posted_by = models.CharField(max_length=64, default="AirfieldNews")
     date = models.DateField(auto_now_add=False)
     source = models.CharField(max_length=64)
@@ -128,6 +128,8 @@ class ArticleElements(models.Model):
     article_element_content_text = models.TextField(null=True, blank=True)
     article_element_content_twitter = models.CharField(max_length=2048, null=True, blank=True)
     article_element_content_image = models.ImageField(max_length=2048, null=True, blank=True)
+    article_element_content_image_credit = models.CharField(max_length=250)
+    article_element_content_image_desc = models.CharField(max_length=250)
     article_element_content_quote = models.CharField(max_length=1024, null=True, blank=True)
 
 
