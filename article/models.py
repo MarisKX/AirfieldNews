@@ -90,13 +90,14 @@ class Regions(models.Model):
 
 
 class Article(models.Model):
-    article_number = models.CharField(max_length=32, default="1")
+    article_number = models.CharField(max_length=64, default="1")
     article_category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL, related_name='article_category')
     article_sub_category = models.ForeignKey(SubCategory, null=True, blank=True, on_delete=models.SET_NULL, related_name='article_sub_category')
     article_region = models.ForeignKey(Regions, null=True, blank=True, on_delete=models.SET_NULL, related_name='region')
     article_image = models.ImageField(null=True, blank=True)
+    article_image_credit = models.CharField(max_length=250)
     heading = models.CharField(max_length=250)
-    article_insight = models.CharField(max_length=200)
+    article_insight = models.CharField(max_length=2048)
     posted_by = models.CharField(max_length=64, default="AirfieldNews")
     date = models.DateField(auto_now_add=False)
     source = models.CharField(max_length=64)

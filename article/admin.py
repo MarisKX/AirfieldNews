@@ -68,6 +68,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'heading',
         'article_insight',
         'article_image',
+        'article_image_credit',
         'posted_by',
         'date',
         'source',
