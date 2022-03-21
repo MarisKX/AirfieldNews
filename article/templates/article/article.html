@@ -74,7 +74,9 @@
                     {% include 'includes/article_elements/quote.html' %}
                 {% endif %}
             {% endfor %}
-            <small class="source fw-bold">Source: <a href="{{ article.original_post }}" target="_blank">{{ article.source }}</a></small>
+            {% if article.source %}
+                <small class="source fw-bold">Source: <a href="{{ article.original_post }}" target="_blank">{{ article.source }}</a></small>
+            {% endif %}
             <hr>
             {% for tag in article_tags %}
                 <a class="btn bg-dark-blue text-white rounded-0 tag-btn" href="{% url 'home' %}?tag={{ tag.tag_name.name }}">{{ tag.tag_name.tag_name }}</a>
