@@ -95,7 +95,7 @@ class Article(models.Model):
     article_sub_category = models.ForeignKey(SubCategory, null=True, blank=True, on_delete=models.CASCADE, related_name='article_sub_category')
     article_region = models.ForeignKey(Regions, null=False, blank=False, on_delete=models.CASCADE, related_name='region')
     article_image = models.ImageField(null=False, blank=False)
-    article_image_credit = models.CharField(max_length=250)
+    article_image_credit = models.CharField(max_length=250, null=True, blank=True)
     heading = models.CharField(max_length=250, null=False, blank=False)
     article_insight = models.CharField(max_length=250, null=False, blank=False)
     posted_by = models.CharField(max_length=64, default="AirfieldNews")
