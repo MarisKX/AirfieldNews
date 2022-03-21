@@ -91,16 +91,16 @@ class Regions(models.Model):
 
 class Article(models.Model):
     article_number = models.CharField(max_length=64, default="1")
-    article_category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL, related_name='article_category')
-    article_sub_category = models.ForeignKey(SubCategory, null=True, blank=True, on_delete=models.SET_NULL, related_name='article_sub_category')
-    article_region = models.ForeignKey(Regions, null=True, blank=True, on_delete=models.SET_NULL, related_name='region')
-    article_image = models.ImageField(null=True, blank=True)
+    article_category = models.ForeignKey(Category, null=False, blank=False, on_delete=models.CASCADE, related_name='article_category')
+    article_sub_category = models.ForeignKey(SubCategory, null=True, blank=True, on_delete=models.CASCADE, related_name='article_sub_category')
+    article_region = models.ForeignKey(Regions, null=False, blank=False, on_delete=models.CASCADE, related_name='region')
+    article_image = models.ImageField(null=False, blank=False)
     article_image_credit = models.CharField(max_length=250)
-    heading = models.CharField(max_length=250)
-    article_insight = models.CharField(max_length=250)
+    heading = models.CharField(max_length=250, null=False, blank=False)
+    article_insight = models.CharField(max_length=250, null=False, blank=False)
     posted_by = models.CharField(max_length=64, default="AirfieldNews")
     date = models.DateField(auto_now_add=False)
-    source = models.CharField(max_length=64)
+    source = models.CharField(max_length=64, null=True, blank=True)
     original_post = models.URLField(max_length=2048, null=True, blank=True)
 
     def _generate_article_number(self):
@@ -122,14 +122,14 @@ class Article(models.Model):
 class ArticleElements(models.Model):
     article_number = models.ForeignKey(Article, null=False, blank=False, on_delete=models.CASCADE, related_name='article_elements')
     sequence = models.IntegerField(default=1)
-    type = models.ForeignKey(ElementType, null=True, blank=True, on_delete=models.CASCADE, related_name='element_type')
+    type = models.ForeignKey(ElementType, null=False, blank=False, on_delete=models.CASCADE, related_name='element_type')
 
     article_element_content_subheading = models.CharField(max_length=2048, null=True, blank=True)
     article_element_content_text = models.TextField(null=True, blank=True)
     article_element_content_twitter = models.CharField(max_length=2048, null=True, blank=True)
     article_element_content_image = models.ImageField(max_length=2048, null=True, blank=True)
-    article_element_content_image_credit = models.CharField(max_length=250)
-    article_element_content_image_desc = models.CharField(max_length=250)
+    article_element_content_image_credit = models.CharField(max_length=250, null=True, blank=True)
+    article_element_content_image_desc = models.CharField(max_length=250, null=True, blank=True)
     article_element_content_quote = models.CharField(max_length=1024, null=True, blank=True)
 
 
